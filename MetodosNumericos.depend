@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1763238153 source:c:\users\andressa\documents\codigos\metodosnumericos\main.c
+	<stdio.h>
+	<stdlib.h>
+	"integracaoNumerica.h"
+
+1763238153 c:\users\andressa\documents\codigos\metodosnumericos\integracaonumerica.h
+
+1763238295 source:c:\users\andressa\documents\codigos\metodosnumericos\integracaonumerica.c
+	"integracaoNumerica.h"
+
