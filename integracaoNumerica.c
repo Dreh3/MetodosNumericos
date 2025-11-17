@@ -167,10 +167,12 @@ void executarMetodoIntegracaoNumerica(){
     };
 
     //Solicita ao usuario os pares de pontos
-    for(int = 0; i<num_funcoes; i++){
+    for(int i = 0; i<num_funcoes; i++){
         printf("\nInforme os pares ordenados da função %d", i);
+        int contador = 1;
         while(contador<= num_pontos){
 
+            contador = 0;
         };
     };
 

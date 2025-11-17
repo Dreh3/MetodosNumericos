@@ -4,13 +4,13 @@
 
 int main()
 {
-    int op=0;
+    int op=1;
 
 
     while(op!=0){
-            printf("\t\t\t\nMENU\n\tSelecione o método que deseja utilizar");
+            printf("\n\t\t\t\t\tMENU\n");
             printf("\n\t\t1 - Métodos diretos para Sistemas de Equações Lineares\n\t\t2 - Métodos iterativos para Sistemas de Equações Lineares");
-            printf("\n\t\t3 - Interpolação Polinomial por Mínimos Quadrados\n\t4 - Integração Numérica");
+            printf("\n\t\t3 - Interpolação Polinomial por Mínimos Quadrados\n\t\t4 - Integração Numérica\n\n\tSelecione o método que deseja utilizar: ");
             scanf("%d", &op);
             switch (op){
             case 1:
