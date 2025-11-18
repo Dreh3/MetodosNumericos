@@ -6,7 +6,6 @@ int main()
 {
     int op=1;
 
-
     while(op!=0){
             printf("\n\t\t\t\t\tMENU\n");
             printf("\n\t\t1 - Métodos diretos para Sistemas de Equações Lineares\n\t\t2 - Métodos iterativos para Sistemas de Equações Lineares");
@@ -24,11 +23,19 @@ int main()
                 break;
             case 4:
                 printf("\n\tVocê selecionou a opção 4: Integração Numérica\n");
-
+                executarMetodoIntegracaoNumerica();
+                break;
+            case 0:
+                printf("\n\tEncerrando\n");
                 break;
             default:
+                printf("\n\t ALERTA: Opção inexistente");
                 break;
-            }
+            };
+            printf("\n\t\t\t\t\tMENU\n");
+            printf("\n\t\t1 - Métodos diretos para Sistemas de Equações Lineares\n\t\t2 - Métodos iterativos para Sistemas de Equações Lineares");
+            printf("\n\t\t3 - Interpolação Polinomial por Mínimos Quadrados\n\t\t4 - Integração Numérica\n\n\tSelecione o método que deseja utilizar: ");
+            scanf("%d", &op);
     };
 
 
