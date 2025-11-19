@@ -1,9 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <locale.h>
 #include "integracaoNumerica.h"
+
 
 int main()
 {
+
+    //Habilitar caracteres especiais
+    SetConsoleOutputCP(CP_UTF8);
+    setlocale(LC_ALL, "pt_BR.UTF-8");
+
     int op=1;
 
     while(op!=0){
@@ -11,6 +18,8 @@ int main()
             printf("\n\t\t1 - Métodos diretos para Sistemas de Equações Lineares\n\t\t2 - Métodos iterativos para Sistemas de Equações Lineares");
             printf("\n\t\t3 - Interpolação Polinomial por Mínimos Quadrados\n\t\t4 - Integração Numérica\n\n\tSelecione o método que deseja utilizar: ");
             scanf("%d", &op);
+            setbuf(stdin,NULL);
+            //limpar tela aqui
             switch (op){
             case 1:
                 printf("\n\tVocê selecionou a opção 1: Métodos diretos para Sistemas de Equações Lineares\n");
@@ -32,10 +41,13 @@ int main()
                 printf("\n\t ALERTA: Opção inexistente");
                 break;
             };
+
             printf("\n\t\t\t\t\tMENU\n");
             printf("\n\t\t1 - Métodos diretos para Sistemas de Equações Lineares\n\t\t2 - Métodos iterativos para Sistemas de Equações Lineares");
             printf("\n\t\t3 - Interpolação Polinomial por Mínimos Quadrados\n\t\t4 - Integração Numérica\n\n\tSelecione o método que deseja utilizar: ");
             scanf("%d", &op);
+            setbuf(stdin,NULL);
+            //limpa tela aqui
     };
 
 
