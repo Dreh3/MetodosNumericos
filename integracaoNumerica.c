@@ -97,12 +97,12 @@ void executarMetodoIntegracaoNumerica(){
     PONTOS_ *pontos = NULL;
 
     //Variável controle para permitir corrigir dados inseridos incorretamente
-    char erro_dado = 'n';
+    char dados_certos = 'n';
 
     //printf("Iniciando execucao dos metodos de integracao numérica...\n");
 
     //Solicita ao usuário os dados de intervalo
-    while(erro_dado != 's' && erro_dado != 'S'){
+    while(dados_certos != 's' && dados_certos != 'S'){
           printf("\nDigite o valor inicial do intervalo: ");
           scanf("%f", &inicio_intervalo);
           setbuf(stdin,NULL);
@@ -111,14 +111,14 @@ void executarMetodoIntegracaoNumerica(){
           setbuf(stdin,NULL);
           printf("\n\nO intervalo informado foi [%.2f, %.2f]", inicio_intervalo, final_intervalo);
           printf("\nEstá correto? Digite 'S' para sim e 'N' para não: ");
-          scanf("%c", &erro_dado);
+          scanf("%c", &dados_certos);
           //setbuf(stdin,NULL);
     };
 
-    erro_dado = 'n';
+    dados_certos = 'n';
 
     //Solicita ao usuario os dados gerais do problema
-    while(erro_dado != 's' && erro_dado != 'S'){
+    while(dados_certos != 's' && dados_certos != 'S'){
           printf("\nDigite o número de funções: ");
           scanf("%d", &num_funcoes);
           setbuf(stdin,NULL);
@@ -127,11 +127,11 @@ void executarMetodoIntegracaoNumerica(){
           setbuf(stdin,NULL);
           printf("\n\nDados informados:\n\t Número de funções: %d\t Número de pontos: %d", num_funcoes, num_pontos);
           printf("\nEstá correto? Digite 'S' para sim e 'N' para não: ");
-          scanf("%c", &erro_dado);
+          scanf("%c", &dados_certos);
           setbuf(stdin,NULL);
     };
 
-    erro_dado = 'n';
+    dados_certos = 'n';
 
     if(num_funcoes>1){
       printf("\n\t AVISO: Informe as funções em ordem, sendo a mais externa primeiro");
@@ -149,7 +149,7 @@ void executarMetodoIntegracaoNumerica(){
 
         printf("\n\tInforme os pares ordenados da função %d\n", i);
 
-        while(erro_dado != 's' && erro_dado != 'S'){
+        while(dados_certos != 's' && dados_certos != 'S'){
             for(int j = 0; j<num_pontos; j++){
                 printf("\n\tx%d: ", j);
                 scanf("%f", &pontos[j].ponto_x);
@@ -173,11 +173,11 @@ void executarMetodoIntegracaoNumerica(){
             };
 
             printf("\nEstá correto? Digite 'S' para sim e 'N' para não: ");
-            scanf("%c", &erro_dado);
+            scanf("%c", &dados_certos);
             setbuf(stdin,NULL);
         };
 
-        erro_dado = 'n';
+        dados_certos = 'n';
 
         //chama o método e passa os dados salvando em uma variável inicial
         if(i==1){

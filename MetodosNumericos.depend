@@ -1,16 +1,25 @@
 # depslib dependency file v1.0
-1763560682 source:c:\users\andressa\documents\codigos\metodosnumericos\main.c
+1763687134 source:c:\users\andressa\documents\codigos\metodosnumericos\main.c
 	<stdio.h>
 	<stdlib.h>
 	<locale.h>
 	"integracaoNumerica.h"
+	"metodoGauss.h"
 
 1763560192 c:\users\andressa\documents\codigos\metodosnumericos\integracaonumerica.h
 	<windows.h>
 
-1763560318 source:c:\users\andressa\documents\codigos\metodosnumericos\integracaonumerica.c
+1763671923 source:c:\users\andressa\documents\codigos\metodosnumericos\integracaonumerica.c
 	<stdio.h>
 	<string.h>
 	<stdlib.h>
 	"integracaoNumerica.h"
+
+1763682654 source:c:\users\andressa\documents\codigos\metodosnumericos\metodogauss.c
+	"metodoGauss.h"
+
+1763687175 c:\users\andressa\documents\codigos\metodosnumericos\metodogauss.h
+	<stdlib.h>
+	<stdio.h>
+	<windows.h>
 

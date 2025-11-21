@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <locale.h>
 #include "integracaoNumerica.h"
+#include "metodoGauss.h"
 
 
 int main()
@@ -17,12 +18,17 @@ int main()
             printf("\n\t\t\t\t\tMENU\n");
             printf("\n\t\t1 - Métodos diretos para Sistemas de Equações Lineares\n\t\t2 - Métodos iterativos para Sistemas de Equações Lineares");
             printf("\n\t\t3 - Interpolação Polinomial por Mínimos Quadrados\n\t\t4 - Integração Numérica\n\n\tSelecione o método que deseja utilizar: ");
+            printf("\n\t\t0 - Encerrar");
             scanf("%d", &op);
             setbuf(stdin,NULL);
+
+            LIMPA_TELA;
+
             //limpar tela aqui
             switch (op){
             case 1:
                 printf("\n\tVocê selecionou a opção 1: Métodos diretos para Sistemas de Equações Lineares\n");
+                executaMetodoGauss();
                 break;
             case 2:
                 printf("\n\tVocê selecionou a opção 2: Métodos iterativos para Sistemas de Equações Lineares\n");
@@ -42,11 +48,11 @@ int main()
                 break;
             };
 
-            printf("\n\t\t\t\t\tMENU\n");
-            printf("\n\t\t1 - Métodos diretos para Sistemas de Equações Lineares\n\t\t2 - Métodos iterativos para Sistemas de Equações Lineares");
-            printf("\n\t\t3 - Interpolação Polinomial por Mínimos Quadrados\n\t\t4 - Integração Numérica\n\n\tSelecione o método que deseja utilizar: ");
-            scanf("%d", &op);
-            setbuf(stdin,NULL);
+//            printf("\n\t\t\t\t\tMENU\n");
+//            printf("\n\t\t1 - Métodos diretos para Sistemas de Equações Lineares\n\t\t2 - Métodos iterativos para Sistemas de Equações Lineares");
+//            printf("\n\t\t3 - Interpolação Polinomial por Mínimos Quadrados\n\t\t4 - Integração Numérica\n\n\tSelecione o método que deseja utilizar: ");
+//            scanf("%d", &op);
+//            setbuf(stdin,NULL);
             //limpa tela aqui
     };
 
