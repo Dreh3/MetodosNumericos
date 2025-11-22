@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
 #include "integracaoNumerica.h"
 //função para solicitar dados - será que deveria vai ser chato usando ponteiros para alocar espaço
 
@@ -33,24 +30,8 @@ float regraDosTrapeziosRepetida(int num_pontos, PONTOS_ pontos[]){
             //float h = (pontos[i+1]->ponto_x-pontos[i]->ponto_x); //supondo espaçado irregularmente
             somas = pontos[i].ponto_y + somas;
         };
-    printf("h = %f", h);
-    printf("y0 = %f", pontos[0].ponto_y);
-    soma_areas = h/2*(pontos[0].ponto_y + 2 *somas + pontos[num_pontos-1].ponto_y);
-    return soma_areas;
-};
-
-//versão correta - no teste ficou: 0.182435
-float regraDosTrapeziosRepetida2(int num_pontos, PONTOS_ pontos[]){
-    float soma_areas=0;
-    //int contador = num_pontos;
-    float somas =0;
-    float h = (pontos[1].ponto_x-pontos[0].ponto_x); //supondo igualmente espaçado
-        for(int i = 1; i<num_pontos-1; i ++){
-            //float h = (pontos[i+1]->ponto_x-pontos[i]->ponto_x); //supondo espaçado irregularmente
-            somas = pontos[i].ponto_y + somas;
-        };
-    printf("h = %f", h);
-    printf("y0 = %f", pontos[0].ponto_y);
+    //printf("h = %f", h);
+    //printf("y0 = %f", pontos[0].ponto_y);
     soma_areas = h/2*(pontos[0].ponto_y + 2 *somas + pontos[num_pontos-1].ponto_y);
     return soma_areas;
 };
@@ -151,10 +132,10 @@ void executarMetodoIntegracaoNumerica(){
 
         while(dados_certos != 's' && dados_certos != 'S'){
             for(int j = 0; j<num_pontos; j++){
-                printf("\n\tx%d: ", j);
+                printf("\n\tx%d: ", j+1);
                 scanf("%f", &pontos[j].ponto_x);
                 setbuf(stdin,NULL);
-                printf("\ty%d: ", j);
+                printf("\ty%d: ", j+1);
                 scanf("%f", &pontos[j].ponto_y);
                 setbuf(stdin,NULL);
             };
@@ -164,12 +145,12 @@ void executarMetodoIntegracaoNumerica(){
             //imprime x
             printf("\n x |");
             for(int j=0; j<num_pontos; j++){
-              printf(" %f |", pontos[j].ponto_x);
+              printf(" %8.4f |", pontos[j].ponto_x);
             };
             //imprime y
             printf("\n y |");
             for(int j=0; j<num_pontos; j++){
-              printf(" %f |", pontos[j].ponto_y);
+              printf(" %8.4f |", pontos[j].ponto_y);
             };
 
             printf("\nEstá correto? Digite 'S' para sim e 'N' para não: ");

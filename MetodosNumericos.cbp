@@ -35,6 +35,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="integracaoNumerica.h" />
+		<Unit filename="interpolacaoNumerica.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="interpolacaoNumerica.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>

@@ -9,5 +9,5 @@
     #define LIMPA_TELA system("clear");
 #endif
 
-void metodoGauss(float *matriz, int num_colunas, int num_linhas);
+float* metodoGauss(float *matriz, int num_colunas, int num_linhas, boolean detalhes);
 void executaMetodoGauss(void);

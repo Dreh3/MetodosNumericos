@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
-#include "integracaoNumerica.h"
-#include "metodoGauss.h"
+//#include "integracaoNumerica.h"
+//#include "metodoGauss.h"
+#include "interpolacaoNumerica.h"
 
 
 int main()
@@ -17,8 +18,7 @@ int main()
     while(op!=0){
             printf("\n\t\t\t\t\tMENU\n");
             printf("\n\t\t1 - Métodos diretos para Sistemas de Equações Lineares\n\t\t2 - Métodos iterativos para Sistemas de Equações Lineares");
-            printf("\n\t\t3 - Interpolação Polinomial por Mínimos Quadrados\n\t\t4 - Integração Numérica\n\n\tSelecione o método que deseja utilizar: ");
-            printf("\n\t\t0 - Encerrar");
+            printf("\n\t\t3 - Interpolação Polinomial por Mínimos Quadrados\n\t\t4 - Integração Numérica\n\t\t0 - Encerrar\n\n\tSelecione o método que deseja utilizar: ");
             scanf("%d", &op);
             setbuf(stdin,NULL);
 
@@ -35,6 +35,7 @@ int main()
                 break;
             case 3:
                 printf("\n\tVocê selecionou a opção 3: Interpolação Polinomial por Mínimos Quadrados\n");
+                executarInterpolacaoNumericaLinear();
                 break;
             case 4:
                 printf("\n\tVocê selecionou a opção 4: Integração Numérica\n");

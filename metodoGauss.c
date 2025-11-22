@@ -3,7 +3,7 @@
 
 
 //fazer retornar um vetor de float com os valores em ordem das soluções
-void metodoGauss(float *matriz, int num_colunas, int num_linhas){  //faz uma conversão da matriz para ponteiro float ao chamar a função
+float* metodoGauss(float *matriz, int num_colunas, int num_linhas, boolean detalhes){  //faz uma conversão da matriz para ponteiro float ao chamar a função
 
     //calculo a quntidade de pivores
     int num_pivo = num_colunas-2;
@@ -24,16 +24,19 @@ void metodoGauss(float *matriz, int num_colunas, int num_linhas){  //faz uma con
         coluna_pivo = linha_pivo;
     };
 
-    printf("\nMatriz encontrada:\n");
-    for(int i = 0; i<num_linhas; i ++){
-        for(int j=0; j<num_colunas;j++){
-            printf("%8.2f", matriz[i*num_colunas + j]);
+    if(detalhes){
+        printf("\nMatriz encontrada:\n");
+        for(int i = 0; i<num_linhas; i ++){
+            for(int j=0; j<num_colunas;j++){
+                printf("%8.2f", matriz[i*num_colunas + j]);
+            };
+            printf("\n");
         };
-        printf("\n");
     };
 
+
     //encontra os valores
-    float solucao[num_colunas-1];
+    float* solucao = (float *) malloc ((num_colunas-1)*sizeof(float));
 
     for(int i = num_linhas-1;i>=0; i--){
         float soma = 0;
@@ -48,12 +51,17 @@ void metodoGauss(float *matriz, int num_colunas, int num_linhas){  //faz uma con
         solucao[i] = (matriz[i*num_colunas + num_colunas-1]-soma)/matriz[i*num_colunas + i]; //- soma porque troca o sinal
     };
 
-    printf("\nA solução encontrada foi: ");
-    //int a = 'a';
-    for(int i =0; i<num_colunas-1;i++){
-        printf("%8.2f | ",solucao[i]);
+    if(detalhes){
+        printf("\nA solução encontrada foi: ");
+        //int a = 'a';
+        for(int i =0; i<num_colunas-1;i++){
+            printf("%8.2f | ",solucao[i]);
+        };
     };
 
+
+
+    return solucao;
 
 };
 
@@ -128,6 +136,6 @@ void executaMetodoGauss(){
     };
 
         //executa o método
-    metodoGauss((float *)matriz, num_colunas, num_linhas);
+    metodoGauss((float *)matriz, num_colunas, num_linhas, 1);
 
 };
