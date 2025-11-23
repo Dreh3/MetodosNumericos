@@ -11,7 +11,7 @@
 	<stdlib.h>
 	<windows.h>
 
-1763853935 source:c:\users\andressa\documents\codigos\metodosnumericos\integracaonumerica.c
+1763855726 source:c:\users\andressa\documents\codigos\metodosnumericos\integracaonumerica.c
 	"integracaoNumerica.h"
 
 1763855595 source:c:\users\andressa\documents\codigos\metodosnumericos\metodogauss.c
@@ -22,10 +22,11 @@
 	<stdio.h>
 	<windows.h>
 
-1763854769 source:c:\users\andressa\documents\codigos\metodosnumericos\interpolacaonumerica.c
+1763871924 source:c:\users\andressa\documents\codigos\metodosnumericos\interpolacaonumerica.c
 	"interpolacaoNumerica.h"
 
-1763854595 c:\users\andressa\documents\codigos\metodosnumericos\interpolacaonumerica.h
+1763863621 c:\users\andressa\documents\codigos\metodosnumericos\interpolacaonumerica.h
 	"integracaoNumerica.h"
 	"metodoGauss.h"
+	<math.h>
 
