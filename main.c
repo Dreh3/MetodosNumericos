@@ -35,7 +35,7 @@ int main()
                 break;
             case 3:
                 printf("\n\tVocê selecionou a opção 3: Interpolação Polinomial por Mínimos Quadrados\n");
-                executarInterpolacaoNumericaLinear();
+                executarInterpolacaoNumerica();
                 break;
             case 4:
                 printf("\n\tVocê selecionou a opção 4: Integração Numérica\n");

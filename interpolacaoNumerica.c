@@ -8,14 +8,14 @@ float g_log(int k, float x){
     if(k==0)
         return 1;
     else
-        return -x;
+        return x;
 };
 
 float g_aproximacao(float expoente, float x){
     return pow(x,expoente);
 };
 
-void executarInterpolacaoNumericaLinear(){
+void executarInterpolacaoNumerica(){
 
     //float matrizNormal[2][3];
     char dados_certos = 'n';
@@ -28,7 +28,6 @@ void executarInterpolacaoNumericaLinear(){
 
     //Solicitação de dados ao usuário
     while(dados_certos != 's' && dados_certos != 'S'){
-
         printf("\nSeleciona o tipo de aproximação:\n\t 1 - Linear\t2 - Parabólica\t3 - Exponencial\n\t-");
         scanf("%d", &tipo);
         setbuf(stdin,NULL);
@@ -74,81 +73,81 @@ void executarInterpolacaoNumericaLinear(){
         setbuf(stdin,NULL);
     };
 
-    if(tipo==1 || tipo ==2 || tipo==3){
-        switch(tipo){
-        case 1:
-            printf("\n\tAproximação linear");
 
-            num_coeficientes = 2;
-            num_linhas = 2;
-            num_colunas = 3;
-            break;
-        case 2:
-            printf("\n\tAproximação parabólica");
-            num_coeficientes = 3;
-            num_linhas = 3;
-            num_colunas = 4;
-            break;
-        case 3:
-            printf("\n\tAproximação exponencial");
-            num_coeficientes = 2;
-            num_linhas = 2;
-            num_colunas = 3;
-            break;
-        default:
-            break;
-        };
-        float r, s;
-        float matriz[num_linhas][num_colunas];
+    switch(tipo){
+    case 1:
+        printf("\n\tAproximação linear");
 
-        for (int i = 0; i < num_linhas; i++)
+        num_coeficientes = 2;
+        num_linhas = 2;
+        num_colunas = 3;
+        break;
+    case 2:
+        printf("\n\tAproximação parabólica");
+        num_coeficientes = 3;
+        num_linhas = 3;
+        num_colunas = 4;
+        break;
+    case 3:
+        printf("\n\tAproximação exponencial");
+        num_coeficientes = 2;
+        num_linhas = 2;
+        num_colunas = 3;
+        break;
+    default:
+        break;
+    };
+
+    float r, s;
+    float matriz[num_linhas][num_colunas];
+
+    for (int i = 0; i < num_linhas; i++)
+    {
+        for (int j = 0; j < num_colunas; j++)
+            matriz[i][j] = 0;
+    };
+
+    for (int k = 0; k < num_pontos; k++)
+    {
+        for (int i = 0; i < num_coeficientes; i++)
         {
-            for (int j = 0; j < num_colunas; j++)
-                matriz[i][j] = 0;
-        };
 
-        for (int k = 0; k < num_pontos; k++)
-        {
-            for (int i = 0; i < num_coeficientes; i++)
+            if(tipo == 3){
+                r = g_log(i, pontos[k].ponto_x);
+                matriz[i][num_colunas-1] += r * log(pontos[k].ponto_y);
+            }else{
+                r = g_aproximacao(i, pontos[k].ponto_x);
+                matriz[i][num_colunas-1] += r * pontos[k].ponto_y;  //para os f(x)
+            };
+            for (int j = 0; j < num_coeficientes; j++)
             {
-
                 if(tipo == 3){
-                    r = g_log(i, pontos[k].ponto_x);
-                    matriz[i][num_colunas-1] += r * log(pontos[k].ponto_y);
+                    s = g_log(j, pontos[k].ponto_x);
                 }else{
-                    r = g_aproximacao(i, pontos[k].ponto_x);
-                    matriz[i][num_colunas-1] += r * pontos[k].ponto_y;  //para os f(x)
+                    s = g_aproximacao(j, pontos[k].ponto_x);
                 };
-                for (int j = 0; j < num_coeficientes; j++)
-                {
-                    if(tipo == 3){
-                        s = g_log(j, pontos[k].ponto_x);
-                    }else{
-                        s = g_aproximacao(j, pontos[k].ponto_x);
-                    };
-                    matriz[i][j] += r * s;
-                };
+                matriz[i][j] += r * s;
             };
         };
+    };
+
 
         //devo reescrever a matriz pra ficar na formatação correta
 
-        float *solucao = metodoGauss((float *) matriz, num_colunas, num_linhas, 1);
+        float *solucao = metodoGauss((float *) matriz, num_colunas, num_linhas, 0);
 
         if(tipo == 3){
-             printf("\nA solução encontrada foi: \n\tg(x) = %8.4f * e ^ (%c%8.4f * x)", solucao[1],solucao[0]>0?'-':' ',solucao[0]);
+             printf("\nCoeficiente encontrados: \n\ta1 = %8.4f e a2 = %8.4f", solucao[1],solucao[0]);
+             printf("\nA solução final: \n\tg(x) = %8.4f * (%8.4f ^ x)", exp(solucao[0]),exp(solucao[1]));
         }else{
-            printf("\nA solução encontrada foi: \n\tg(x) = %8.4f %c %8.4fx", solucao[0],solucao[1]>0?'+':' ',solucao[1]);
+            printf("\nA solução encontrada foi: \n\tg(x) = %8.4f %c %8.4fx",solucao[0],solucao[1]>0?'+':' ',solucao[1]);
             if(num_coeficientes==3){
                 printf(" %c %8.4fx^2",solucao[2]>0?'+':' ', solucao[2]);
             };
         };
 
 
-    }else{
-        printf("\n\tAproximação exponencial:");
 
-    };
 
 //            float soma_g1_g1 = num_pontos;
 //            float soma_g1_g2 = 0;

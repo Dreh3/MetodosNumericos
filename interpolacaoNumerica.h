@@ -2,4 +2,4 @@
 #include "metodoGauss.h"
 #include <math.h>
 
-void executarInterpolacaoNumericaLinear(void);
+void executarInterpolacaoNumerica(void);

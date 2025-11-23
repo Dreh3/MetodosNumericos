@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1763854703 source:c:\users\andressa\documents\codigos\metodosnumericos\main.c
+1763937432 source:c:\users\andressa\documents\codigos\metodosnumericos\main.c
 	<stdio.h>
 	<stdlib.h>
 	<locale.h>
@@ -22,10 +22,10 @@
 	<stdio.h>
 	<windows.h>
 
-1763871924 source:c:\users\andressa\documents\codigos\metodosnumericos\interpolacaonumerica.c
+1763937555 source:c:\users\andressa\documents\codigos\metodosnumericos\interpolacaonumerica.c
 	"interpolacaoNumerica.h"
 
-1763863621 c:\users\andressa\documents\codigos\metodosnumericos\interpolacaonumerica.h
+1763937432 c:\users\andressa\documents\codigos\metodosnumericos\interpolacaonumerica.h
 	"integracaoNumerica.h"
 	"metodoGauss.h"
 	<math.h>
