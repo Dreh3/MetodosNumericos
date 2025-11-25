@@ -3,15 +3,15 @@
 #include <locale.h>
 //#include "integracaoNumerica.h"
 //#include "metodoGauss.h"
-#include "interpolacaoNumerica.h"
+#include "metodoGaussSiedel.h"
 
 
 int main()
 {
 
     //Habilitar caracteres especiais
-    SetConsoleOutputCP(CP_UTF8);
-    setlocale(LC_ALL, "pt_BR.UTF-8");
+    //SetConsoleOutputCP(CP_UTF8);
+    setlocale(LC_ALL, "");
 
     int op=1;
 
@@ -32,6 +32,7 @@ int main()
                 break;
             case 2:
                 printf("\n\tVocê selecionou a opção 2: Métodos iterativos para Sistemas de Equações Lineares\n");
+                executarMetodoGaussSiedel();
                 break;
             case 3:
                 printf("\n\tVocê selecionou a opção 3: Interpolação Polinomial por Mínimos Quadrados\n");
@@ -59,26 +60,4 @@ int main()
 
 
     return 0;
-}
-
-
-//    POINTS pares_ordenados[7];
-//    pares_ordenados[0].ponto_x = 3.0;
-//    pares_ordenados[1].ponto_x = 3.1;
-//    pares_ordenados[2].ponto_x = 3.2;
-//    pares_ordenados[3].ponto_x = 3.3;
-//    pares_ordenados[4].ponto_x = 3.4;
-//    pares_ordenados[5].ponto_x = 3.5;
-//    pares_ordenados[6].ponto_x = 3.6;
-//    pares_ordenados[0].ponto_y = 0.3333;
-//    pares_ordenados[1].ponto_y = 0.3225;
-//    pares_ordenados[2].ponto_y = 0.3135;
-//    pares_ordenados[3].ponto_y = 0.3030;
-//    pares_ordenados[4].ponto_y = 0.2941;
-//    pares_ordenados[5].ponto_y = 0.2857;
-//    pares_ordenados[6].ponto_y = 0.2778;
-//
-//    float resultadoRT = regraDosTrapeziosRepetida2(7, pares_ordenados);
-//    printf("O valor encontrado foi %f\n", resultadoRT);
-//    resultadoRT = regraSimpsonRepetida2(7, pares_ordenados);
-//    printf("\nO valor encontrado em Simpson foi %f", resultadoRT);
+};

@@ -15,6 +15,19 @@ float g_aproximacao(float expoente, float x){
     return pow(x,expoente);
 };
 
+float aproximacao_linear(float a, float b, float x){
+    return (a*x + b);
+};
+
+float aproximacao_parabola(float a, float b, float c, float x){
+    return (a*pow(x,2) + b*x + c);
+};
+
+double aproximacao_exponencial(float a1, float a2, float x){ //log 10
+    return (pow(10, a2) * (pow(pow(10,a1),x)));
+};
+
+
 void executarInterpolacaoNumerica(){
 
     //float matrizNormal[2][3];
@@ -28,7 +41,7 @@ void executarInterpolacaoNumerica(){
 
     //Solicitação de dados ao usuário
     while(dados_certos != 's' && dados_certos != 'S'){
-        printf("\nSeleciona o tipo de aproximação:\n\t 1 - Linear\t2 - Parabólica\t3 - Exponencial\n\t-");
+        printf("\n\n\t 1 - Linear\t2 - Parabólica\t3 - Exponencial\nSeleciona o tipo de aproximação: ");
         scanf("%d", &tipo);
         setbuf(stdin,NULL);
         printf("\nDigite o número de pares ordenados: ");
@@ -47,6 +60,8 @@ void executarInterpolacaoNumerica(){
 
     while(dados_certos != 's' && dados_certos != 'S'){
         for(int j = 0; j<num_pontos; j++){
+            //int c;
+            //setbuf(stdin,NULL);
             printf("\n\tx%d: ", j+1);
             scanf("%f", &pontos[j].ponto_x);
             setbuf(stdin,NULL);
@@ -114,7 +129,7 @@ void executarInterpolacaoNumerica(){
 
             if(tipo == 3){
                 r = g_log(i, pontos[k].ponto_x);
-                matriz[i][num_colunas-1] += r * log(pontos[k].ponto_y);
+                matriz[i][num_colunas-1] += r * log10(pontos[k].ponto_y);
             }else{
                 r = g_aproximacao(i, pontos[k].ponto_x);
                 matriz[i][num_colunas-1] += r * pontos[k].ponto_y;  //para os f(x)
@@ -138,7 +153,7 @@ void executarInterpolacaoNumerica(){
 
         if(tipo == 3){
              printf("\nCoeficiente encontrados: \n\ta1 = %8.4f e a2 = %8.4f", solucao[1],solucao[0]);
-             printf("\nA solução final: \n\tg(x) = %8.4f * (%8.4f ^ x)", exp(solucao[0]),exp(solucao[1]));
+             printf("\nA solução final: \n\tg(x) = (10 ^ %8.4f) * (%8.4f ^ x)", pow(10,solucao[0]),pow(10,solucao[1]));
         }else{
             printf("\nA solução encontrada foi: \n\tg(x) = %8.4f %c %8.4fx",solucao[0],solucao[1]>0?'+':' ',solucao[1]);
             if(num_coeficientes==3){
@@ -146,33 +161,35 @@ void executarInterpolacaoNumerica(){
             };
         };
 
+        char utilizar_funcao = 'n';
 
+        printf("\nDeseja simular um ponto? Digite 'S' para sim e 'N' para não: ");
+        scanf("%c", &utilizar_funcao);
+        setbuf(stdin,NULL);
+        //float y_aproximado = 0;
+        float x=0;
+        while(utilizar_funcao=='s' || utilizar_funcao=='S'){
+            printf("\nDigite o valor de x: ");
+            scanf("%f", &x);
+            setbuf(stdin,NULL);
+            switch (tipo){
+                case 1:
+                    printf("\nO valor de y encontrado foi: %8.4f",aproximacao_linear(solucao[1],solucao[0],x));
+                    break;
+                case 2:
+                    printf("\nO valor de y encontrado foi: %8.4f",aproximacao_parabola(solucao[2],solucao[1],solucao[0],x));
+                    break;
+                case 3:
+                    printf("\nO valor de y encontrado foi: %f",aproximacao_exponencial(solucao[1],solucao[0],x));
+                    break;
+                default:
+                    break;
 
+            };
 
-//            float soma_g1_g1 = num_pontos;
-//            float soma_g1_g2 = 0;
-//            float soma_g2_g2 = 0;
-//            float soma_g1_y = 0;
-//            float soma_g2_y = 0;
-//
-//            //construir matriz normal para função linear
-//            //somatório de g1 x g1
-//            for(int i = 0; i < num_pontos; i ++){
-//                soma_g2_g2 = soma_g2_g2 + g2_linear(pontos[i].ponto_x)*g2_linear(pontos[i].ponto_x);
-//                soma_g1_g2 = soma_g1_g2 + g1_linear(pontos[i].ponto_x)*g2_linear(pontos[i].ponto_x);
-//                soma_g1_y = soma_g1_y + g1_linear(pontos[i].ponto_x)*pontos[i].ponto_y;
-//                soma_g2_y = soma_g2_y + g2_linear(pontos[i].ponto_x)*pontos[i].ponto_y;
-//            };
-//
-//            //escrevendo na matriz normal
-//            matriz[1][0] = matriz[0][1] = soma_g1_g2;
-//            matriz[0][0] = soma_g1_g1;
-//            matriz[1][1] = soma_g2_g2;
-//            matriz[1][2] = soma_g2_y;
-//            matriz[0][2] = soma_g1_y;
-
-
-
-     //teste
+            printf("\nDeseja continuar? Digite 'S' para sim e 'N' para não: ");
+            scanf(" %c", &utilizar_funcao);
+            setbuf(stdin,NULL);
+        };
 
 };
