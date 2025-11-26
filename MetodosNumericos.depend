@@ -1,38 +1,39 @@
 # depslib dependency file v1.0
-1764030175 source:c:\users\andressa\documents\codigos\metodosnumericos\main.c
+1764183400 source:c:\users\andressa\documents\codigos\metodosnumericos\main.c
 	<stdio.h>
 	<stdlib.h>
 	<locale.h>
+	"integracaoNumerica.h"
 	"metodoGaussSiedel.h"
 
-1763941705 c:\users\andressa\documents\codigos\metodosnumericos\integracaonumerica.h
+1764186722 c:\users\andressa\documents\codigos\metodosnumericos\integracaonumerica.h
 	<stdio.h>
 	<string.h>
 	<stdlib.h>
 	<math.h>
 	<windows.h>
 
-1764032501 source:c:\users\andressa\documents\codigos\metodosnumericos\integracaonumerica.c
+1764186707 source:c:\users\andressa\documents\codigos\metodosnumericos\integracaonumerica.c
 	"integracaoNumerica.h"
 
-1764032501 source:c:\users\andressa\documents\codigos\metodosnumericos\metodogauss.c
+1764182709 source:c:\users\andressa\documents\codigos\metodosnumericos\metodogauss.c
 	"metodoGauss.h"
 
-1763855585 c:\users\andressa\documents\codigos\metodosnumericos\metodogauss.h
+1764183273 c:\users\andressa\documents\codigos\metodosnumericos\metodogauss.h
 	<stdlib.h>
 	<stdio.h>
 	<windows.h>
 
-1764032501 source:c:\users\andressa\documents\codigos\metodosnumericos\interpolacaonumerica.c
+1764187628 source:c:\users\andressa\documents\codigos\metodosnumericos\interpolacaonumerica.c
 	"interpolacaoNumerica.h"
 
-1763941705 c:\users\andressa\documents\codigos\metodosnumericos\interpolacaonumerica.h
+1764183495 c:\users\andressa\documents\codigos\metodosnumericos\interpolacaonumerica.h
 	"integracaoNumerica.h"
 	"metodoGauss.h"
 
-1764032501 source:c:\users\andressa\documents\codigos\metodosnumericos\metodogausssiedel.c
+1764186251 source:c:\users\andressa\documents\codigos\metodosnumericos\metodogausssiedel.c
 	"metodoGaussSiedel.h"
 
-1763943322 c:\users\andressa\documents\codigos\metodosnumericos\metodogausssiedel.h
+1764186707 c:\users\andressa\documents\codigos\metodosnumericos\metodogausssiedel.h
 	"interpolacaoNumerica.h"
 

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
-//#include "integracaoNumerica.h"
+#include "integracaoNumerica.h"
 //#include "metodoGauss.h"
 #include "metodoGaussSiedel.h"
 
@@ -10,22 +10,20 @@ int main()
 {
 
     //Habilitar caracteres especiais
-    //SetConsoleOutputCP(CP_UTF8);
     setlocale(LC_ALL, "");
 
-    int op=1;
+    int op=1;   //variável para armazenar opção do usuário
 
-    while(op!=0){
+    while(op!=0){                           //loop para repetir a seleção do método
             printf("\n\t\t\t\t\tMENU\n");
             printf("\n\t\t1 - Métodos diretos para Sistemas de Equações Lineares\n\t\t2 - Métodos iterativos para Sistemas de Equações Lineares");
             printf("\n\t\t3 - Interpolação Polinomial por Mínimos Quadrados\n\t\t4 - Integração Numérica\n\t\t0 - Encerrar\n\n\tSelecione o método que deseja utilizar: ");
             scanf("%d", &op);
             setbuf(stdin,NULL);
 
-            LIMPA_TELA;
+            LIMPA_TELA;             //Limpa a tela
 
-            //limpar tela aqui
-            switch (op){
+            switch (op){            //Executa o método escolhido pelo usuário
             case 1:
                 printf("\n\tVocê selecionou a opção 1: Métodos diretos para Sistemas de Equações Lineares\n");
                 executaMetodoGauss();
@@ -49,13 +47,6 @@ int main()
                 printf("\n\t ALERTA: Opção inexistente");
                 break;
             };
-
-//            printf("\n\t\t\t\t\tMENU\n");
-//            printf("\n\t\t1 - Métodos diretos para Sistemas de Equações Lineares\n\t\t2 - Métodos iterativos para Sistemas de Equações Lineares");
-//            printf("\n\t\t3 - Interpolação Polinomial por Mínimos Quadrados\n\t\t4 - Integração Numérica\n\n\tSelecione o método que deseja utilizar: ");
-//            scanf("%d", &op);
-//            setbuf(stdin,NULL);
-            //limpa tela aqui
     };
 
 

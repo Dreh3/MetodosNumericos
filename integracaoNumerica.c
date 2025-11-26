@@ -1,39 +1,21 @@
 #include "integracaoNumerica.h"
-//função para solicitar dados - será que deveria vai ser chato usando ponteiros para alocar espaço
 
-/*
--- tem que fazer o método separado e passar os pontos por parâmetro
-
-1° pede o número de funções- começando pela mais exterior - para gerar um laço que vai pedindo os pontos
-antes disso, intervalo, n° de pontos (aloco o espaço do vetor com base nisso), vetor para salvar área de funções em ordem
-2° ao final subtrair todos as áreas seguintes da área inicial
-
---exibir dados dos diferentes métodos
-
-//colocar verificação de dados a cada conjunto de pontos para a pessoa pode repetir
-
-//devo implementar validação para não encerrar o programa caso o tipo de dado inserido esteja incorreto?
-
-if(scanf()!=1){
-    printf("\nAlgum dado foi inserido incorretamente. Por favor, informe os dados novamente.");
-    continue;
-}
-
-*/
-
+//implemeenta a Regra dos Trapézios Repetida
 float regraDosTrapeziosRepetida(int num_pontos, PONTOS_ pontos[]){
-    float soma_areas=0;
+    float soma_areas=0;             //Inicializa o valor final em 0
     //int contador = num_pontos;
-    float somas =0;
-    float h = (pontos[1].ponto_x-pontos[0].ponto_x); //supondo igualmente espaçado
-        for(int i = 1; i<num_pontos-1; i ++){
-            //float h = (pontos[i+1]->ponto_x-pontos[i]->ponto_x); //supondo espaçado irregularmente
-            somas = pontos[i].ponto_y + somas;
-        };
-    //printf("h = %f", h);
-    //printf("y0 = %f", pontos[0].ponto_y);
+    float somas =0;                 //Inicializa soma das áreas dos trpézios em 0
+    float h = (pontos[1].ponto_x-pontos[0].ponto_x);               //supondo igualmente espaçado
+
+    //Itera para calcular a área correpondente de cada intervalo
+    for(int i = 1; i<num_pontos-1; i ++){
+        //float h = (pontos[i+1]->ponto_x-pontos[i]->ponto_x); //supondo espaçado irregularmente
+        somas = pontos[i].ponto_y + somas;
+    };
+
+    //Realiza o cálculo da área resultante
     soma_areas = (h/2)*(pontos[0].ponto_y + 2 *somas + pontos[num_pontos-1].ponto_y);
-    return soma_areas;
+    return soma_areas;              //Retorna o valor calculado
 };
 
 
@@ -41,20 +23,18 @@ float regraSimpsonRepetida(int num_pontos, PONTOS_ pontos[]){
 
     float soma_areas=0;
     if(num_pontos%2==0){                //Para garantir números de intervalos pares
-        num_pontos=num_pontos-1;
+        num_pontos=num_pontos-1;        //subtrae-se um intervalo
     };
 
-    float h = (pontos[1].ponto_x-pontos[0].ponto_x); //supondo igualmente espaçado
+    float h = (pontos[1].ponto_x-pontos[0].ponto_x); //supondo igualmente espaçado (Regra)
 
-    //f(xo) + f(xm)
+    //Salva o valor de: f(xo) + f(xm)
     float parcela1 = (pontos[0].ponto_y + pontos[num_pontos-1].ponto_y);
 
-    float parcela2=0;
-    float parcela3=0;
+    float parcela2=0;       //Variável para salvar os valores dos índices ímpares
+    float parcela3=0;       //Variável para salvar os valores dos índices pares
 
         for(int i = 1; i<num_pontos-1; i ++){
-            //float h = (pontos[i+1]->ponto_x-pontos[i]->ponto_x); //supondo espaçado irregularmente
-            //parcela 2
             if(i%2!=0 ){ // ímpares
               parcela2 = parcela2 + pontos[i].ponto_y;
             }else{ // pares
@@ -62,9 +42,10 @@ float regraSimpsonRepetida(int num_pontos, PONTOS_ pontos[]){
             };
         };
 
+    //Realiza o cálculo final da área resultante
     soma_areas = (h/3) * (parcela1 + 4*parcela2 + 2* parcela3);
 
-    return soma_areas;
+    return soma_areas;          //Retorna o valor calculado
 
 };
 
@@ -98,7 +79,7 @@ void executarMetodoIntegracaoNumerica(){
 
     dados_certos = 'n';
 
-    //Solicita ao usuario os dados gerais do problema
+    //Solicita ao usuário os dados gerais do problema
     while(dados_certos != 's' && dados_certos != 'S'){
           printf("\nDigite o número de funções: ");
           scanf("%d", &num_funcoes);
@@ -118,14 +99,15 @@ void executarMetodoIntegracaoNumerica(){
       printf("\n\t AVISO: Informe as funções em ordem, sendo a mais externa primeiro");
     };
 
-    float area_funcao_principal_RS = 0;
+    float area_funcao_principal_RS = 0;             //Variáveis para armazenar dados a serem calculados
     float area_funcoes_secundarias_RS = 0;
     float area_funcao_principal_RT = 0;
     float area_funcoes_secundarias_RT = 0;
 
-    //Solicita ao usuario os pares de pontos
+    //Solicita ao usuário os pares de pontos
     for(int i = 1; i<=num_funcoes; i++){
-        //aloco os pontos para a função
+
+        //aloca os pontos para a função
         pontos = (PONTOS_ *) malloc (num_pontos*sizeof(PONTOS_));
 
         printf("\n\tInforme os pares ordenados da função %d\n", i);
@@ -140,6 +122,7 @@ void executarMetodoIntegracaoNumerica(){
                 setbuf(stdin,NULL);
             };
 
+            //Exibe dados para conferência
             printf("\n\n\tOs pares ordenados da função %d são:", i);
 
             //imprime x
@@ -161,22 +144,22 @@ void executarMetodoIntegracaoNumerica(){
         dados_certos = 'n';
 
         //chama o método e passa os dados salvando em uma variável inicial
-        if(i==1){
-            //significa que a função mais externa
+        if(i==1){   //significa que é a função mais externa
             area_funcao_principal_RT = regraDosTrapeziosRepetida(num_pontos, pontos);
             area_funcao_principal_RS = regraSimpsonRepetida(num_pontos,pontos);
-            printf("\nArea principal: Regra Trapezios: %f Regra Simpson: %f", area_funcao_principal_RT,area_funcao_principal_RS );
+            //printf("\nArea principal: Regra Trapezios: %f Regra Simpson: %f", area_funcao_principal_RT,area_funcao_principal_RS );
         }else{
+            //acumula os valores de áreas das funções internas
             area_funcoes_secundarias_RT = regraDosTrapeziosRepetida(num_pontos, pontos);
 
             area_funcoes_secundarias_RS = regraSimpsonRepetida(num_pontos, pontos);
-            printf("\nRS : %f", area_funcoes_secundarias_RS);
+            //printf("\nRS : %f", area_funcoes_secundarias_RS);
         };
         printf("\nArea secundaria %d: Regra Trapezios: %f Regra Simpson: %f", i,area_funcoes_secundarias_RT,area_funcoes_secundarias_RS );
         area_funcao_principal_RT = area_funcao_principal_RT - area_funcoes_secundarias_RT;
         area_funcao_principal_RS = area_funcao_principal_RS - area_funcoes_secundarias_RS;
 
-        free(pontos);   //libero o espaço para os novos dados
+        free(pontos);   //libera o espaço para os novos dados
     };
 
     //exibe o valor calculado

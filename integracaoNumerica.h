@@ -1,3 +1,6 @@
+#ifndef INTEGRACAO_H
+#define INTEGRACAO_H
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -17,6 +20,9 @@ typedef struct PONTOS{
     float ponto_y; //ordenada
 }PONTOS_;
 
+//protótipo das funções
 float regraDosTrapeziosRepetida(int num_pontos, PONTOS_ pontos[]);
 float regraSimpsonRepetida(int num_pontos, PONTOS_ pontos[]);
 void executarMetodoIntegracaoNumerica(void);
+
+#endif

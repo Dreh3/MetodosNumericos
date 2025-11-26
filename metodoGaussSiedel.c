@@ -1,5 +1,7 @@
 #include "metodoGaussSiedel.h"
 
+//Código desenvolvido por Maria Luísa
+
 int N;
 float A[30][30], B[30], X0[30], X1[30];
 float Maxdif;
@@ -9,19 +11,23 @@ void LeMatriz()
 {
     int i, j;
 
-    printf("Ordem do sistema (ex: 5): ");
+    printf("Ordem do sistema (Obs: máximo é 30): ");
     scanf("%d", &N);
     setbuf(stdin,NULL);
 
-    printf("\nDigite cada linha com os %d coeficientes e o termo independente.\n", N);
-    printf("Exemplo: a11 a12 ... a1N b1\n\n");
+    //printf("\nDigite cada linha com os %d coeficientes e o termo independente.\n", N);
+    //printf("Exemplo: a11 a12 ... a1N b1\n\n");
 
-    for(i = 0; i < N; i++){
-        printf("Linha %d:\n", i+1);
-        for(j = 0; j < N; j++)
+    for(i = 0; i < N; i++){                 //Iteração para leitura dos dados
+        printf("\n\tEquação %d:\n", i+1);
+        for(j = 0; j < N; j++){
+            printf("Coeficiente %d: ", j+1);
             scanf("%f", &A[i][j]);
+            setbuf(stdin,NULL);
+        }
+        printf("Resultado: ");
         scanf("%f", &B[i]);
-        setbuf(stdin,NULL); //limpar antes da próxima linha
+        setbuf(stdin,NULL); //limpar buffer antes da próxima linha
     };
 
 };
@@ -66,21 +72,43 @@ void Iteracao()
             }
         }
 
-        X1[i] = soma / A[i][i];
+        X1[i] = soma / A[i][i];                //Salva novo valor de X1
     };
 };
+
+
 
 void executarMetodoGaussSiedel(){
 
     char dados_certos = 'n';
 
+    //lê os dados
     while(dados_certos!='s' && dados_certos != 'S'){
-        LeMatriz();
-        printf("Os dados informados estão corretos? Digite 'S' para sim e 'N' para não: ");
+
+        LeMatriz();                         //Função para leitura dos dados
+
+        LIMPA_TELA;
+
+        //imprime para conferência
+        printf("O sistema informado é: ");
+        int a = 'a';
+        for(int i = 0; i< N; i ++){
+            printf("\n\t");
+            for(int j = 0; j< N; j ++){
+                printf("%8.2f%c ", A[i][j], a);
+                a+=1;
+            };
+            printf("= %8.2f", B[i]);
+            a='a';
+        };
+
+        printf("\nOs dados informados estão corretos? Digite 'S' para sim e 'N' para não: ");
         scanf("%c", &dados_certos);
         setbuf(stdin,NULL);
     };
 
+
+    //Execução do método
     int i,k=0;
 
     for(i=0;i<N;i++) X0[i]=0.0;
@@ -94,7 +122,6 @@ void executarMetodoGaussSiedel(){
         k++;
     }while (Maxdif> 1.0e-3);
 
-    Imprime(X1,0);
-
+    Imprime(X1,0);              //Mostra a solução encontrada
 
 };

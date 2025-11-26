@@ -1,3 +1,6 @@
+#ifndef GAUSS_H
+#define GAUSS_H
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <windows.h>
@@ -9,5 +12,9 @@
     #define LIMPA_TELA system("clear");
 #endif
 
+
+//protótipo das funções
 float* metodoGauss(float *matriz, int num_colunas, int num_linhas, boolean detalhes);
 void executaMetodoGauss(void);
+
+#endif
