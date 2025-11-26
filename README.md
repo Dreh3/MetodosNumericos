@@ -35,7 +35,7 @@ As soluções são exibidas em ordem.
 O método de Gauss Seidel utiliza-se de uma abordagem iterativa para identificar a solução das equações. <br>
 
 __Os parâmetros de entrada:__
-1) Ordem da mastriz do sistema (considerando apenas coeficientes);
+1) Ordem da matriz do sistema (considerando apenas coeficientes);
 2) Coeficientes e termos independente de cada equação; <br>
 
 As soluções são exibidas em ordem.
@@ -46,7 +46,7 @@ O método de Interpolação Polinomial permite identificar uma função linear, 
 
 __Os parâmetros de entrada:__
 1) Tipo de aproximação desejada;
-2) Número de pontos; <br>
+2) Número de pontos. <br>
 
 A função encontrada é exibida, e o usuário pode optar por simular novos dados com base na função aproximada.
 
