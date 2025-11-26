@@ -50,6 +50,10 @@ __Os parâmetros de entrada:__
 
 A função encontrada é exibida, e o usuário pode optar por simular novos dados com base na função aproximada.
 
+```bash
+AVISO: A interpolação para aproximação exponencial realizada internamente o tratamento dos dados para aplicação do método com logaritmo na base 10.
+```
+
 ### 4. Métodos de Integração Numérica
 
 O método de Integração Numérica permite calcular a área entre curvas utilizando dos seguintes métodos: Regra dos Trapézios Repetida e Regra de Simpson Repetida. <br>
