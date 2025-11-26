@@ -4,6 +4,6 @@
 #include "interpolacaoNumerica.h"       //Contêm todas as bibliotecas necessárias
 
 //protótipo das funções
-void executarMetodoGaussSiedel(void);
+void executarMetodoGaussSeidel(void);
 
 #endif

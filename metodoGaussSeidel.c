@@ -78,7 +78,7 @@ void Iteracao()
 
 
 
-void executarMetodoGaussSiedel(){
+void executarMetodoGaussSeidel(){
 
     char dados_certos = 'n';
 

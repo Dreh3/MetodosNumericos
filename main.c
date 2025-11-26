@@ -3,7 +3,7 @@
 #include <locale.h>
 #include "integracaoNumerica.h"
 //#include "metodoGauss.h"
-#include "metodoGaussSiedel.h"
+#include "metodoGaussSeidel.h"
 
 
 int main()
@@ -30,7 +30,7 @@ int main()
                 break;
             case 2:
                 printf("\n\tVocê selecionou a opção 2: Métodos iterativos para Sistemas de Equações Lineares\n");
-                executarMetodoGaussSiedel();
+                executarMetodoGaussSeidel();
                 break;
             case 3:
                 printf("\n\tVocê selecionou a opção 3: Interpolação Polinomial por Mínimos Quadrados\n");
