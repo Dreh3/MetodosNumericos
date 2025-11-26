@@ -51,7 +51,7 @@ __Os parâmetros de entrada:__
 A função encontrada é exibida, e o usuário pode optar por simular novos dados com base na função aproximada.
 
 ```bash
-AVISO: A interpolação para aproximação exponencial realizada internamente o tratamento dos dados para aplicação do método com logaritmo na base 10.
+AVISO: A interpolação para aproximação exponencial realiza internamente o tratamento dos dados para aplicação do método com logaritmo na base 10.
 ```
 
 ### 4. Métodos de Integração Numérica
