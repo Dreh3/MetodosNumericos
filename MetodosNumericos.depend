@@ -1,10 +1,10 @@
 # depslib dependency file v1.0
-1764188164 source:c:\users\andressa\documents\codigos\metodosnumericos\main.c
+1764188206 source:c:\users\andressa\documents\codigos\metodosnumericos\main.c
 	<stdio.h>
 	<stdlib.h>
 	<locale.h>
 	"integracaoNumerica.h"
-	"metodoGaussSiedel.h"
+	"metodoGaussSeidel.h"
 
 1764186722 c:\users\andressa\documents\codigos\metodosnumericos\integracaonumerica.h
 	<stdio.h>
@@ -39,4 +39,7 @@
 
 1764188176 source:c:\users\andressa\documents\codigos\metodosnumericos\metodogaussseidel.c
 	"metodoGaussSiedel.h"
+
+1764188164 c:\users\andressa\documents\codigos\metodosnumericos\metodogaussseidel.h
+	"interpolacaoNumerica.h"
 

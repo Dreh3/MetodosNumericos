@@ -27,8 +27,8 @@ float aproximacao_parabola(float a, float b, float c, float x){
 };
 
 //Formato da função expoencial aproximada
-double aproximacao_exponencial(float a1, float a2, float x){ //log 10
-    return (pow(10, a2 + a1*x));
+double aproximacao_exponencial(float a1, float a2, float x){
+    return (exp(a2 + a1*x));
 };
 
 
@@ -38,6 +38,7 @@ void executarInterpolacaoNumerica(){
     char dados_certos = 'n';
     int num_pontos;
     int tipo;
+    float buffer;
 
     int num_coeficientes = 0;
     int num_linhas = 0;
@@ -73,6 +74,7 @@ void executarInterpolacaoNumerica(){
             printf("\ty%d: ", j+1);
             scanf("%f", &pontos[j].ponto_y);
             setbuf(stdin,NULL);
+            //pontos[j].ponto_y = log10(buffer); //reduz com log de 10
         };
 
         printf("\n\n\tOs pares ordenados são:");
@@ -136,7 +138,7 @@ void executarInterpolacaoNumerica(){
             //Para a exponencial é necessário utilizar uma função específica com log
             if(tipo == 3){
                 r = g_log(i, pontos[k].ponto_x);
-                matriz[i][num_colunas-1] += r * log10f(pontos[k].ponto_y);
+                matriz[i][num_colunas-1] += r * log(pontos[k].ponto_y);
             }else{
                 r = g_aproximacao(i, pontos[k].ponto_x);
                 matriz[i][num_colunas-1] += r * pontos[k].ponto_y;  //para os f(x)
@@ -160,7 +162,7 @@ void executarInterpolacaoNumerica(){
         //Exibe a solução e a função aproximada
         if(tipo == 3){
              printf("\nCoeficiente encontrados: \n\ta1 = %8.4f e a2 = %8.4f", solucao[1],solucao[0]);
-             printf("\nA solução final: \n\tg(x) = (10 ^ %8.4f) * (%8.4f ^ x)", solucao[0],pow(10,solucao[1]));
+             printf("\nA solução final: \n\tg(x) = (e ^ %8.4f) * (e ^ (%8.4f ^ x))", solucao[0],solucao[1]);
         }else{
             printf("\nA solução encontrada foi: \n\tg(x) = %8.4f %c %8.4fx",solucao[0],solucao[1]>0?'+':' ',solucao[1]);
             if(num_coeficientes==3){
