@@ -17,6 +17,10 @@ __Os métodos implementados foram:__
 
 O programa permite conferir se os dados inseridos estão corretos. Se não, permite informar os dados novamente para todos os métodos.
 
+```bash
+AVISO: Na entrada de dados decimais, o sistema reconhece vírgula e não ponto.
+```
+
 ## Detalhamento dos Métodos
 
 ### 1. Método de Gauss
@@ -49,10 +53,6 @@ __Os parâmetros de entrada:__
 2) Número de pontos. <br>
 
 A função encontrada é exibida, e o usuário pode optar por simular novos dados com base na função aproximada.
-
-```bash
-AVISO: A interpolação para aproximação exponencial realiza internamente o tratamento dos dados para aplicação do método com logaritmo na base 10.
-```
 
 ### 4. Métodos de Integração Numérica
 
